@@ -49,3 +49,7 @@ select * from sightings WHERE location like '%Pass%';
 
 -- Problem 4
 select name, count(ranger_id) as total_sightings from rangers JOIN sightings USING(ranger_id) GROUP BY (ranger_id);
+
+
+-- Problem 5
+select common_name from species LEFT JOIN sightings USING(species_id) where sighting_id IS NULL;
