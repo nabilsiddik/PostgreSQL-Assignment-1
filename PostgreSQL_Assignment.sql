@@ -53,3 +53,12 @@ select name, count(ranger_id) as total_sightings from rangers JOIN sightings USI
 
 -- Problem 5
 select common_name from species LEFT JOIN sightings USING(species_id) where sighting_id IS NULL;
+
+
+-- Problem 6
+select sp.common_name, si.sighting_time, ra.name from sightings si JOIN species sp on si.species_id = sp.species_id join rangers ra on si.ranger_id = ra.ranger_id order by (si.sighting_time) desc limit 2;
+
+
+
+-- Problem 7
+update species set conservation_status = 'Historic' where extract (year from discovery_date) < 1800;
