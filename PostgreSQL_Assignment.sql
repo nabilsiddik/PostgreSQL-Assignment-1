@@ -73,3 +73,8 @@ when extract(hour from sighting_time) >= 12 and extract(hour from sighting_time)
 else 'Evening'
 end as time_of_day
 from sightings;
+
+
+
+-- Problem 9
+DELETE from rangers where ranger_id not in (select distinct ranger_id from sightings);
