@@ -62,3 +62,14 @@ select sp.common_name, si.sighting_time, ra.name from sightings si JOIN species 
 
 -- Problem 7
 update species set conservation_status = 'Historic' where extract (year from discovery_date) < 1800;
+
+
+
+-- Problem 8
+SELECT sighting_id,
+case
+when EXTRACT(hour from sighting_time) < 12 then 'Morning'
+when extract(hour from sighting_time) >= 12 and extract(hour from sighting_time) <= 17 then 'Afternoon'
+else 'Evening'
+end as time_of_day
+from sightings;
